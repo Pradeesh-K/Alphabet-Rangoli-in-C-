@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main(int argc, char **argv){
+int n=7;
+string str="abcdefghijklmnopqrstuvwxyz";
+string first="";                  // two temporaty strings 'first' and 'second' are created  which are then concatenated
+string second="";
+string result="";
+string result2="";
+int k=0;
+for(int i=0;i<2*n-1;i++)
+{  if(i<n){                         // to ensure the pattern is repeated
+  k=i;
+}
+  else {
+    k=2*n-2-i;
+  }
+  second=str.substr(n-1-k,k+1);
+  first=str.substr(n-k,k);
+  reverse(first.begin(),first.end());
+  result=first+second;            // creating the combined string
+  result2="";
+  for(int j=0;j<result.length();j++) {  // adding dashes to the combined string
+    result2 += result[j]+"-";
+  }
+  // cout<<result2<<'\n';
+  result2=result2.substr(0,result2.length()-1);
+  // cout<<result2<<'\n';
+  cout<<string((4*n-3-result2.length())/2,'-')<<result2<<string((4*n-3-result2.length())/2,'-')<<'\n';            // creating the final pattern
+  }  
+  
+  }
